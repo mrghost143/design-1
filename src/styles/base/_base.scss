@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+  border: none;
+  @apply leading-none;
+
+  &:disabled {
+    cursor: not-allowed !important;
+  }
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    // background: #002256cf;
+    background: #d8d0d0;
+
+    border-radius: 10px 0 0 10px;
+
+    &:hover {
+      background: #d8d0d0;
+    }
+  }
+}
+
+html {
+  font-size: 10px;
+  background-color: #ffffff;
+  min-height: 100vh;
+  height: 100%;
+  padding: 15px;
+}
+
+body#root {
+  display: grid;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar main";
+  grid-template-columns: auto 1fr; /* Sidebar takes fixed width, main content is flexible */
+  grid-template-rows: auto 1fr; /* Header is auto height, main content takes remaining space */
+  gap: 15px;
+  height: 100%;
+}
+
+.main {
+  grid-area: main;
+  @apply common-card;
+}

@@ -1,0 +1,60 @@
+.sidebar {
+  max-width: max-content;
+  padding: 20px;
+  grid-area: sidebar;
+  overflow-y: auto;
+  @apply common-card flex flex-col;
+  &.active {
+    // min-width: 200px;\
+    .sidebar-menu-heading-text {
+      font-size: 1.4rem;
+      min-width: 15rem;
+    }
+  }
+
+  &-menu {
+    @apply flex flex-col gap-3 ;
+
+    &-heading {
+      @apply flex items-center gap-2;
+      cursor: pointer;
+      border-radius: 6px;
+      padding: 5px;
+      transition: all 0.2s linear;
+
+      &.menu-active {
+        background-color: red;
+        color: white;
+
+        .icon{
+            color: white;
+        }
+      }
+
+      &:hover{
+        background-color: red;
+        color: white;
+      }
+
+      &-text {
+        font-size: 0;
+        transition: all 0.2s linear;
+      }
+    }
+    &-item {
+      @apply text-base flex flex-col;
+    }
+  }
+
+  &-submenu {
+    @apply flex flex-col gap-6 ps-4;
+    cursor: pointer;
+    &-item {
+        display: none;
+
+      &:hover {
+        color: red;
+      }
+    }
+  }
+}
