@@ -1,39 +1,56 @@
 .sidebar {
   max-width: max-content;
-  padding: 20px;
   grid-area: sidebar;
   overflow-y: auto;
   @apply common-card flex flex-col;
+  padding: 0;
+
   &.active {
-    // min-width: 200px;\
-    .sidebar-menu-heading-text {
-      font-size: 1.4rem;
-      min-width: 15rem;
+
+    .sidebar-menu {
+      padding: 1.5rem;
+      &-heading {
+        gap: 8px;
+
+        &-text {
+          font-size: 1.4rem;
+          min-width: 15rem;
+        }
+      }
     }
+
+    .logo {
+      justify-content: start;
+      gap: 8px;
+      padding: 1.5rem;
+
+      &-text {
+        font-size: 1.4rem
+      }
+    }
+
   }
 
   &-menu {
-    @apply flex flex-col gap-3 ;
+    @apply flex flex-col gap-3;
+    padding: 1rem;
+
 
     &-heading {
-      @apply flex items-center gap-2;
+      @apply flex items-center;
       cursor: pointer;
       border-radius: 6px;
       padding: 5px;
       transition: all 0.2s linear;
 
       &.menu-active {
-        background-color: red;
+        background-color: rgb(43, 20, 77);
         color: white;
 
-        .icon{
-            color: white;
-        }
       }
 
-      &:hover{
-        background-color: red;
-        color: white;
+      &:not(.menu-active):hover {
+        background-color: rgba(160, 109, 255, 0.4);
       }
 
       &-text {
@@ -41,20 +58,59 @@
         transition: all 0.2s linear;
       }
     }
+
     &-item {
       @apply text-base flex flex-col;
     }
   }
 
   &-submenu {
-    @apply flex flex-col gap-6 ps-4;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-inline-start: 1rem;
     cursor: pointer;
+    position: relative;
+    margin-inline-start: 2rem;
+    margin-block: 1rem;
+
+
+    &::before {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 1.5px;
+      left: 0;
+      background-color: rgba(128, 128, 128, 0.495);
+
+    }
+
     &-item {
-        display: none;
+      cursor: pointer;
+      border-radius: 6px;
+      padding: 5px;
+      transition: all 0.2s linear;
 
       &:hover {
-        color: red;
+        background-color: rgba(160, 109, 255, 0.4);
       }
+    }
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid gray;
+    padding: 1rem;
+
+    &-img {}
+
+    &-text {
+      font-size: 0rem;
+      color: #2b144d;
+      font-weight: 500;
     }
   }
 }

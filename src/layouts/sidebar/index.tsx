@@ -1,41 +1,75 @@
-import { Icon } from "../../components/icon"
-
-
-
+import { useState } from "react";
+import { Icon } from "../../components/icon";
 
 export const Sidebar = () => {
-  return (
-    <aside className="sidebar active">
-        <div className="logo mb-7">
-            Logo
-        </div>
-        <ul className="sidebar-menu">
-            <li className="sidebar-menu-item">
-                <div className="sidebar-menu-heading menu-active">
-                 <Icon name="file-list" size={22} color="black" className="icon" ariaLabel="file-list icon"  />
-                   <span className="sidebar-menu-heading-text"> Masters</span>
-                </div>
-      
-            <ul className="sidebar-submenu">
-                <li className="sidebar-submenu-item">
-                    Users
-                </li>
-                <li className="sidebar-submenu-item">
-                    Agenda
-                </li>
-                <li className="sidebar-submenu-item">
-                    Categories
-                </li>
-            </ul>
+    type MenuLogo = "master" | "report" | "home" | "compliance" | "log" | "setting" | "logo";
 
-            </li>
-            <li className="sidebar-menu-item">
-            <div className="sidebar-menu-heading">
-            <Icon name="report" size={22} color="black" ariaLabel="report icon"  />
-            <span className="sidebar-menu-heading-text">Reports</span>
+    interface SidebarItem {
+        menuLogo: MenuLogo;
+        menuText: string;
+        SubMenu: string[];
+    }
+
+    const [sideActive, setSideActive] =  useState<boolean | false>(false);
+    const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+    const sideBarArray: SidebarItem[] = [
+        {
+            menuLogo: "home",
+            menuText: "Dashboard",
+            SubMenu: ["Abc", "Xyz", "123"],
+        },
+        {
+            menuLogo: "master",
+            menuText: "Master",
+            SubMenu: ["Users", "Agenda", "Categories"],
+        },
+        {
+            menuLogo: "report",
+            menuText: "Report",
+            SubMenu: ["Users2", "Agenda2", "Categories2"],
+        },
+    ];
+
+    const onMenuClick = (index) => {
+        setActiveIndex(index);
+        setSideActive(true)
+
+    }
+
+    return (
+        <aside className={`${sideActive ? "active" : ""} sidebar`}>
+            <div className="logo">
+                <div className="logo-img">
+                    <Icon name="logo" size={22} color="#2b144d" className="icon" ariaLabel="logo icon" />
+                </div>
+                <div className="logo-text">Grant Thornton</div>
             </div>
-            </li>
-        </ul>
-    </aside>
-  )
-}
+            <ul className="sidebar-menu">
+                {sideBarArray.map(({ menuLogo, menuText, SubMenu }, index) => (
+                    <li className="sidebar-menu-item" key={menuText} onClick={() => onMenuClick(index)}>
+                        <div className={`sidebar-menu-heading ${activeIndex === index ? "menu-active" : ""}`}>
+                            <Icon
+                                name={menuLogo}
+                                size={22}
+                                color={activeIndex === index ? "white" : "black"} // Adjust color based on active index
+                                className="icon"
+                                ariaLabel={`${menuLogo} icon`}
+                            />
+                            <span className="sidebar-menu-heading-text">{menuText}</span>
+                        </div>
+                        {activeIndex === index && SubMenu && (
+                            <ul className="sidebar-submenu">
+                                {SubMenu.map((item, subIndex) => (
+                                    <li className="sidebar-submenu-item" key={subIndex}>
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </li>
+                ))}
+            </ul>
+        </aside>
+    );
+};

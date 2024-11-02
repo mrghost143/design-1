@@ -1,10 +1,20 @@
 import React from 'react';
-import { RiFileList2Line } from "react-icons/ri";
 import { CiReceipt } from "react-icons/ci";
+import { HiAtSymbol } from "react-icons/hi2";
+import { FaHome } from "react-icons/fa";
+import { HiMiniCircleStack } from "react-icons/hi2";
+import { BsHddStack } from "react-icons/bs";
+import { FaRegFolder } from "react-icons/fa";
+import { IoSettingsOutline } from "react-icons/io5";
 
 const icons = {
-  "file-list": RiFileList2Line,
+  "home":FaHome,
+  "master":HiMiniCircleStack,
+  "compliance":BsHddStack,
+  "log":FaRegFolder,
+  "setting":IoSettingsOutline,
   "report": CiReceipt,
+  "logo":HiAtSymbol,
 };
 
 type IconName = keyof typeof icons;
