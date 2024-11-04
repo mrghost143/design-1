@@ -46,7 +46,7 @@ body#root {
     "sidebar main";
   grid-template-columns: auto 1fr; /* Sidebar takes fixed width, main content is flexible */
   grid-template-rows: auto 1fr; /* Header is auto height, main content takes remaining space */
-  gap: 15px;
+  gap: 2rem;
   height: 100%;
 }
 

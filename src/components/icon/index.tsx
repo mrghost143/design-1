@@ -6,15 +6,19 @@ import { HiMiniCircleStack } from "react-icons/hi2";
 import { BsHddStack } from "react-icons/bs";
 import { FaRegFolder } from "react-icons/fa";
 import { IoSettingsOutline } from "react-icons/io5";
+import { HiMenu } from "react-icons/hi";
+import { FaRegBell } from "react-icons/fa";
 
 const icons = {
-  "home":FaHome,
-  "master":HiMiniCircleStack,
-  "compliance":BsHddStack,
-  "log":FaRegFolder,
-  "setting":IoSettingsOutline,
+  "menu": HiMenu,
+  "home": FaHome,
+  "master": HiMiniCircleStack,
+  "compliance": BsHddStack,
+  "log": FaRegFolder,
+  "setting": IoSettingsOutline,
   "report": CiReceipt,
-  "logo":HiAtSymbol,
+  "logo": HiAtSymbol,
+  "alert":FaRegBell,
 };
 
 type IconName = keyof typeof icons;

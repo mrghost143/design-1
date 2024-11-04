@@ -55,7 +55,9 @@ export default {
       "yellow-400":"#FEF0CA",
       "yellow-500":"#FABA0A",
       "yellow-600":"#FFA300",
-      "navy-blue":"#002953"
+      "navy-blue":"#002953",
+      "primary":"#2b144d",
+      "secondary":"#a06dff"
 
     },
     backgroundImage: {
